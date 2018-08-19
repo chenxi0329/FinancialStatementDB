@@ -25,4 +25,17 @@ CREATE TABLE ratios (
     netOperatingAssets BIGINT
 );
 
+CREATE TABLE price (
+    cikNumber INT,
+    Symbol character varying(15),
+    date DATE,
+    Open float,
+    High float,
+    Low float,
+    Close float,
+    Adj_Close float,
+    Volume BIGINT
+);
+
+
 \dt;
