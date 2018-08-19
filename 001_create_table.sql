@@ -7,6 +7,18 @@ CREATE TABLE tickers (
     symbol VARCHAR(15)
 );
 
+CREATE TABLE tickers_full (
+    cikNumber INT PRIMARY KEY,
+    symbol VARCHAR(15),
+    fullname VARCHAR(200),
+    exchange VARCHAR(20),
+    sic INT,
+    businessState VARCHAR(20),
+    incorporatedState VARCHAR(20),
+    irsNumber BIGINT
+);
+
+
 CREATE TABLE balance_sheet (
     cikNumber INT PRIMARY KEY,
     assetsTotal BIGINT,
