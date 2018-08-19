@@ -1,9 +1,13 @@
+CREATE DATABASE alpha;
+
+\c alpha;
+
 CREATE TABLE balance_sheet (
     cikNumber INT,
     assetsTotal BIGINT,
     liabilitiesTotal BIGINT,
     liabilitiesAndEquityTotal BIGINT,
-    cashAndCashEquivalents BITINT
+    cashAndCashEquivalents BIGINT
 );
 
 CREATE TABLE income_statement (
@@ -20,3 +24,5 @@ CREATE TABLE ratios (
     operatingLiabilities BIGINT,
     netOperatingAssets BIGINT
 );
+
+\dt;
