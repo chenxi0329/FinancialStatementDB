@@ -16,28 +16,34 @@ def execute_read_query(sql_query, cursor):
     records = cursor.fetchall()
     return records
 
-def download(ticker):
+def download_price(ticker):
     print(ticker)
     subprocess.call(['sh', 'get-yahoo-quotes.sh', ticker])
 
 def is_file_exist_in_current_folder(file_name):
     return os.path.exists(file_name)
 
+def write_list_to_file(list, file_name):
+    thefile = open(file_name, 'w')
+    for item in list:
+        thefile.write("%s\n" % item)
+
+
 cursor = request_cursor(conn_string)
 records = execute_read_query(query_symbols, cursor)
 tickers = [record[1] for record in records]
-failedList = []
+failedSymbols = []
 
 for ticker in tickers:
     failedTimes = 0
     while not is_file_exist_in_current_folder(ticker + '.' + 'csv'):
-        download(ticker)
+        download_price(ticker)
         sleep_time_in_second *= 2
         if wait_between_download:
             time.sleep(sleep_time_in_second)
         failedTimes += 1
         if failedTimes > 5:
-            failedList.append(ticker)
+            failedSymbols.append(ticker)
             break
 
-print(failedList)
+write_list_to_file(failedSymbols, 'failed.csv')
