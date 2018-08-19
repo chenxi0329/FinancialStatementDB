@@ -2,8 +2,13 @@ CREATE DATABASE alpha;
 
 \c alpha;
 
+CREATE TABLE tickers (
+    cikNumber INT PRIMARY KEY,
+    symbol VARCHAR(15)
+);
+
 CREATE TABLE balance_sheet (
-    cikNumber INT,
+    cikNumber INT PRIMARY KEY,
     assetsTotal BIGINT,
     liabilitiesTotal BIGINT,
     liabilitiesAndEquityTotal BIGINT,
@@ -11,30 +16,30 @@ CREATE TABLE balance_sheet (
 );
 
 CREATE TABLE income_statement (
-    cikNumber INT
+    cikNumber INT PRIMARY KEY
 );
 
 CREATE TABLE cashflow_statement (
-    cikNumber INT
+    cikNumber INT PRIMARY KEY
 );
 
 CREATE TABLE ratios (
-    cikNumber INT,
+    cikNumber INT PRIMARY KEY,
     operatingAssets BIGINT,
     operatingLiabilities BIGINT,
     netOperatingAssets BIGINT
 );
 
-CREATE TABLE price (
-    cikNumber INT,
-    Symbol character varying(15),
+CREATE TABLE prices (
+    cikNumber INT PRIMARY KEY,
+    symbol VARCHAR(15),
     date DATE,
-    Open float,
-    High float,
-    Low float,
-    Close float,
-    Adj_Close float,
-    Volume BIGINT
+    open float,
+    high float,
+    low float,
+    close float,
+    adjClose float,
+    volume BIGINT
 );
 
 
